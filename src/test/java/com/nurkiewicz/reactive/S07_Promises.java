@@ -1,15 +1,23 @@
-package com.blogspot.nurkiewicz.reactive;
+package com.nurkiewicz.reactive;
 
-import com.blogspot.nurkiewicz.reactive.util.AbstractFuturesTest;
+import com.nurkiewicz.reactive.util.AbstractFuturesTest;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.nio.file.*;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardWatchEventKinds;
+import java.nio.file.WatchEvent;
+import java.nio.file.WatchKey;
+import java.nio.file.WatchService;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+@Ignore
 public class S07_Promises extends AbstractFuturesTest {
 
 	private static final Logger log = LoggerFactory.getLogger(S07_Promises.class);

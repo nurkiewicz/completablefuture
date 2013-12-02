@@ -1,6 +1,6 @@
-package com.blogspot.nurkiewicz.reactive;
+package com.nurkiewicz.reactive;
 
-import com.blogspot.nurkiewicz.reactive.util.AbstractFuturesTest;
+import com.nurkiewicz.reactive.util.AbstractFuturesTest;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.junit.Test;
@@ -36,10 +36,10 @@ public class S03_Map extends AbstractFuturesTest {
 				java.thenApply((Document doc) -> doc.select("a.question-hyperlink").get(0));
 
 		final CompletableFuture<String> titleText =
-				titleElement.thenApply((Element element) -> element.text());
+				titleElement.thenApply(Element::text);
 
 		final CompletableFuture<Integer> length =
-				titleText.thenApply((String title) -> title.length());
+				titleText.thenApply(String::length);
 
 		log.debug("Length: {}", length.get());
 	}
@@ -52,8 +52,8 @@ public class S03_Map extends AbstractFuturesTest {
 
 		final CompletableFuture<Integer> length = java.
 				thenApply(doc -> doc.select("a.question-hyperlink").get(0)).
-				thenApply(element -> element.text()).
-				thenApply(title -> title.length());
+				thenApply(Element::text).
+				thenApply(String::length);
 
 		log.debug("Length: {}", length.get());
 	}

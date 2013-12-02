@@ -1,7 +1,12 @@
-package com.blogspot.nurkiewicz.reactive.util;
+package com.nurkiewicz.reactive.util;
 
-import com.blogspot.nurkiewicz.reactive.stackoverflow.*;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import com.nurkiewicz.reactive.stackoverflow.ArtificialSleepWrapper;
+import com.nurkiewicz.reactive.stackoverflow.FallbackStubClient;
+import com.nurkiewicz.reactive.stackoverflow.HttpStackOverflowClient;
+import com.nurkiewicz.reactive.stackoverflow.InjectErrorsWrapper;
+import com.nurkiewicz.reactive.stackoverflow.LoggingWrapper;
+import com.nurkiewicz.reactive.stackoverflow.StackOverflowClient;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -9,7 +14,11 @@ import org.junit.rules.TestName;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.concurrent.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.TimeUnit;
 
 public class AbstractFuturesTest {
 
@@ -24,10 +33,12 @@ public class AbstractFuturesTest {
 		return new ThreadFactoryBuilder().setNameFormat("WJUG-pool-%d").build();
 	}
 
-	protected final StackOverflowClient client = new LoggingWrapper(
+	protected final StackOverflowClient client = new FallbackStubClient(
 			new InjectErrorsWrapper(
-					new ArtificialSleepWrapper(
-							new HttpStackOverflowClient()
+					new LoggingWrapper(
+							new ArtificialSleepWrapper(
+									new HttpStackOverflowClient()
+							)
 					), "php"
 			)
 	);

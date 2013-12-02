@@ -1,4 +1,4 @@
-package com.blogspot.nurkiewicz.reactive.stackoverflow;
+package com.nurkiewicz.reactive.stackoverflow;
 
 import org.jsoup.nodes.Document;
 
@@ -17,17 +17,22 @@ public class ArtificialSleepWrapper implements StackOverflowClient {
 
 	@Override
 	public String mostRecentQuestionAbout(String tag) {
-		artificialSleep(1000);
-		return target.mostRecentQuestionAbout(tag);
+		final long start = System.currentTimeMillis();
+		final String result = target.mostRecentQuestionAbout(tag);
+		artificialSleep(1000 - (System.currentTimeMillis() - start));
+		return result;
 	}
 
 	@Override
 	public Document mostRecentQuestionsAbout(String tag) {
 		artificialSleep(1000);
-		return target.mostRecentQuestionsAbout(tag);
+		final long start = System.currentTimeMillis();
+		final Document result = target.mostRecentQuestionsAbout(tag);
+		artificialSleep(1000 - (System.currentTimeMillis() - start));
+		return result;
 	}
 
-	protected static void artificialSleep(int expected) {
+	protected static void artificialSleep(long expected) {
 		try {
 			TimeUnit.MILLISECONDS.sleep((long) (expected + RANDOM.nextGaussian() * expected / 2));
 		} catch (InterruptedException e) {

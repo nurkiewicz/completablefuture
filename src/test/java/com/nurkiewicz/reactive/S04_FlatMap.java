@@ -1,7 +1,7 @@
-package com.blogspot.nurkiewicz.reactive;
+package com.nurkiewicz.reactive;
 
-import com.blogspot.nurkiewicz.reactive.stackoverflow.Question;
-import com.blogspot.nurkiewicz.reactive.util.AbstractFuturesTest;
+import com.nurkiewicz.reactive.stackoverflow.Question;
+import com.nurkiewicz.reactive.util.AbstractFuturesTest;
 import org.jsoup.nodes.Document;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -40,7 +40,6 @@ public class S04_FlatMap extends AbstractFuturesTest {
 
 	@Test
 	public void thenAcceptIsPoor() throws Exception {
-
 		javaQuestions().thenAccept(document -> {
 			findMostInterestingQuestion(document).thenAccept(question -> {
 				googleAnswer(question).thenAccept(answer -> {

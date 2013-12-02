@@ -1,4 +1,4 @@
-package com.blogspot.nurkiewicz.reactive.stackoverflow;
+package com.nurkiewicz.reactive.stackoverflow;
 
 import com.google.common.base.Throwables;
 import org.jsoup.Jsoup;

@@ -1,6 +1,6 @@
-package com.blogspot.nurkiewicz.reactive;
+package com.nurkiewicz.reactive;
 
-import com.blogspot.nurkiewicz.reactive.util.AbstractFuturesTest;
+import com.nurkiewicz.reactive.util.AbstractFuturesTest;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

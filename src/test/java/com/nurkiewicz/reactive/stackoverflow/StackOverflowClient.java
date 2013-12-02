@@ -1,4 +1,4 @@
-package com.blogspot.nurkiewicz.reactive.stackoverflow;
+package com.nurkiewicz.reactive.stackoverflow;
 
 import org.jsoup.nodes.Document;
 
