@@ -9,9 +9,6 @@ import org.slf4j.LoggerFactory;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
 
-/**
- * Sources: <a href="https://github.com/nurkiewicz/wjug-reactive">github.com/nurkiewicz/wjug-reactive</a>
- */
 public class S01_Introduction extends AbstractFuturesTest {
 
 	private static final Logger log = LoggerFactory.getLogger(S01_Introduction.class);
@@ -31,6 +28,7 @@ public class S01_Introduction extends AbstractFuturesTest {
 			}
 		};
 		final Future<String> javaQuestionFuture = executorService.submit(task);
+		//...
 		final String javaQuestion = javaQuestionFuture.get();
 		log.debug("Found: '{}'", javaQuestion);
 	}
@@ -40,13 +38,6 @@ public class S01_Introduction extends AbstractFuturesTest {
 		final Future<String> java = findQuestionsAbout("java");
 		final Future<String> scala = findQuestionsAbout("scala");
 
-		//???
-	}
-
-	@Test
-	public void runWhenFirstFinished() throws Exception {
-		final Future<String> java = findQuestionsAbout("java");
-		final Future<String> scala = findQuestionsAbout("scala");
 		//???
 	}
 

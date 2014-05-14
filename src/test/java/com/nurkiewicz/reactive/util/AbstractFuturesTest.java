@@ -24,13 +24,13 @@ public class AbstractFuturesTest {
 
 	private static final Logger log = LoggerFactory.getLogger(AbstractFuturesTest.class);
 
-	protected final ExecutorService executorService = Executors.newFixedThreadPool(10, threadFactory());
+	protected final ExecutorService executorService = Executors.newFixedThreadPool(10, threadFactory("GeeCON"));
 
 	@Rule
 	public TestName testName = new TestName();
 
-	private ThreadFactory threadFactory() {
-		return new ThreadFactoryBuilder().setNameFormat("WJUG-pool-%d").build();
+	protected ThreadFactory threadFactory(String nameFormat) {
+		return new ThreadFactoryBuilder().setNameFormat(nameFormat + "-%d").build();
 	}
 
 	protected final StackOverflowClient client = new FallbackStubClient(

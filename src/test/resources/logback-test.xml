@@ -3,7 +3,7 @@
 
 	<logger name="net" level="INFO"/>
 	<logger name="com" level="INFO"/>
-	<logger name="com.blogspot" level="ALL"/>
+	<logger name="com.nurkiewicz" level="ALL"/>
 	<logger name="twitter4j" level="INFO"/>
 
 	<root level="ALL">

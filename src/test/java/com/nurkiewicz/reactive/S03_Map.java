@@ -27,13 +27,25 @@ public class S03_Map extends AbstractFuturesTest {
 	}
 
 	@Test
+	public void callbacksCallbacksEverywhere() throws Exception {
+		final CompletableFuture<Document> java = CompletableFuture.supplyAsync(() ->
+						client.mostRecentQuestionsAbout("java"),
+				executorService);
+
+		java.thenAccept(document -> {
+			log.debug("Downloaded: {}", document);
+		});
+	}
+
+	@Test
 	public void thenApply() throws Exception {
 		final CompletableFuture<Document> java = CompletableFuture.supplyAsync(() ->
 				client.mostRecentQuestionsAbout("java"),
 				executorService);
 
 		final CompletableFuture<Element> titleElement =
-				java.thenApply((Document doc) -> doc.select("a.question-hyperlink").get(0));
+				java.thenApply((Document doc) ->
+						doc.select("a.question-hyperlink").get(0));
 
 		final CompletableFuture<String> titleText =
 				titleElement.thenApply(Element::text);
