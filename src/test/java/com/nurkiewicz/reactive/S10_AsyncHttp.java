@@ -4,6 +4,7 @@ import com.ning.http.client.AsyncCompletionHandler;
 import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.Response;
 import com.nurkiewicz.reactive.util.AbstractFuturesTest;
+import org.junit.AfterClass;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +17,13 @@ public class S10_AsyncHttp extends AbstractFuturesTest {
 
 	private static final Logger log = LoggerFactory.getLogger(S10_AsyncHttp.class);
 
+	private static final AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
+
+	@AfterClass
+	public static void closeClient() {
+		asyncHttpClient.close();
+	}
+
 	@Test
 	public void asyncHttpWithCallbacks() throws Exception {
 		loadTag(
@@ -27,7 +35,6 @@ public class S10_AsyncHttp extends AbstractFuturesTest {
 	}
 
 	public void loadTag(String tag, Consumer<String> onSuccess, Consumer<Throwable> onError) throws IOException {
-		AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
 		asyncHttpClient.prepareGet("http://stackoverflow.com/questions/tagged/" + tag).execute(
 				new AsyncCompletionHandler<Void>() {
 
