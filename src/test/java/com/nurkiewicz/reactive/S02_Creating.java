@@ -12,6 +12,13 @@ public class S02_Creating extends AbstractFuturesTest {
 	private static final Logger log = LoggerFactory.getLogger(S02_Creating.class);
 
 	@Test
+	public void completed() throws Exception {
+		final CompletableFuture<Integer> answer = CompletableFuture.completedFuture(42);
+
+		final Integer fortyTwo = answer.get();  //does not block
+	}
+
+	@Test
 	public void supplyAsync() throws Exception {
 		final CompletableFuture<String> java = CompletableFuture.supplyAsync(() ->
 				client.mostRecentQuestionAbout("java")
