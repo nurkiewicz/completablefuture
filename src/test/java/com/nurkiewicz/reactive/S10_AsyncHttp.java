@@ -12,9 +12,9 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
-public class S09_AsyncHttp extends AbstractFuturesTest {
+public class S10_AsyncHttp extends AbstractFuturesTest {
 
-	private static final Logger log = LoggerFactory.getLogger(S09_AsyncHttp.class);
+	private static final Logger log = LoggerFactory.getLogger(S10_AsyncHttp.class);
 
 	@Test
 	public void asyncHttpWithCallbacks() throws Exception {
