@@ -16,8 +16,9 @@ public class S04_FlatMap extends AbstractFuturesTest {
 
 	private CompletableFuture<Document> javaQuestions() {
 		return CompletableFuture.supplyAsync(() ->
-				client.mostRecentQuestionsAbout("java"),
-				executorService);
+						client.mostRecentQuestionsAbout("java"),
+				executorService
+		);
 	}
 
 	private CompletableFuture<Question> findMostInterestingQuestion(Document document) {
@@ -35,7 +36,9 @@ public class S04_FlatMap extends AbstractFuturesTest {
 	@Test
 	public void thenApplyIsWrong() throws Exception {
 		final CompletableFuture<CompletableFuture<Question>> future =
-				javaQuestions().thenApply(doc -> findMostInterestingQuestion(doc));
+				javaQuestions()
+						.thenApply(doc ->
+								findMostInterestingQuestion(doc));
 	}
 
 	@Test

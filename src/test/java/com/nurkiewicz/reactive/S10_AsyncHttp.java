@@ -34,22 +34,27 @@ public class S10_AsyncHttp extends AbstractFuturesTest {
 		TimeUnit.SECONDS.sleep(5);
 	}
 
-	public void loadTag(String tag, Consumer<String> onSuccess, Consumer<Throwable> onError) throws IOException {
-		asyncHttpClient.prepareGet("http://stackoverflow.com/questions/tagged/" + tag).execute(
-				new AsyncCompletionHandler<Void>() {
+	public void loadTag(
+			String tag,
+			Consumer<String> onSuccess,
+			Consumer<Throwable> onError) throws IOException {
+		asyncHttpClient
+				.prepareGet("http://stackoverflow.com/questions/tagged/" + tag)
+				.execute(
+						new AsyncCompletionHandler<Void>() {
 
-					@Override
-					public Void onCompleted(Response response) throws Exception {
-						onSuccess.accept(response.getResponseBody());
-						return null;
-					}
+							@Override
+							public Void onCompleted(Response response) throws Exception {
+								onSuccess.accept(response.getResponseBody());
+								return null;
+							}
 
-					@Override
-					public void onThrowable(Throwable t) {
-						onError.accept(t);
-					}
-				}
-		);
+							@Override
+							public void onThrowable(Throwable t) {
+								onError.accept(t);
+							}
+						}
+				);
 	}
 }
 

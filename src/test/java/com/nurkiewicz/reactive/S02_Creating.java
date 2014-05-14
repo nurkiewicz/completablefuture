@@ -13,24 +13,28 @@ public class S02_Creating extends AbstractFuturesTest {
 
 	@Test
 	public void completed() throws Exception {
-		final CompletableFuture<Integer> answer = CompletableFuture.completedFuture(42);
+		final CompletableFuture<Integer> answer =
+				CompletableFuture.completedFuture(42);
 
-		final Integer fortyTwo = answer.get();  //does not block
+		final int fortyTwo = answer.get();  //does not block
 	}
 
 	@Test
 	public void supplyAsync() throws Exception {
-		final CompletableFuture<String> java = CompletableFuture.supplyAsync(() ->
-				client.mostRecentQuestionAbout("java")
-		);
+		final CompletableFuture<String> java =
+				CompletableFuture.supplyAsync(() ->
+								client.mostRecentQuestionAbout("java")
+				);
 		log.debug("Found: '{}'", java.get());
 	}
 
 	@Test
 	public void supplyAsyncWithCustomExecutor() throws Exception {
-		final CompletableFuture<String> java = CompletableFuture.supplyAsync(() ->
-				client.mostRecentQuestionAbout("java"),
-				executorService);
+		final CompletableFuture<String> java =
+				CompletableFuture.supplyAsync(() ->
+						client.mostRecentQuestionAbout("java"),
+						executorService
+				);
 		log.debug("Found: '{}'", java.get());
 	}
 

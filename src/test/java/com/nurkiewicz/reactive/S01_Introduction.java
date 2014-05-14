@@ -21,12 +21,7 @@ public class S01_Introduction extends AbstractFuturesTest {
 
 	@Test
 	public void executorService() throws Exception {
-		final Callable<String> task = new Callable<String>() {
-			@Override
-			public String call() throws Exception {
-				return client.mostRecentQuestionAbout("java");
-			}
-		};
+		final Callable<String> task = () -> client.mostRecentQuestionAbout("java");
 		final Future<String> javaQuestionFuture = executorService.submit(task);
 		//...
 		final String javaQuestion = javaQuestionFuture.get();

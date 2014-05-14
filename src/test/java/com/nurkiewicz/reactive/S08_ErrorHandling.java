@@ -27,13 +27,14 @@ public class S08_ErrorHandling extends AbstractFuturesTest {
 		final CompletableFuture<String> questions = questions("php");
 
 		//when
-		final CompletableFuture<String> recovered = questions.handle((result, throwable) -> {
-			if (throwable != null) {
-				return "No PHP today due to: " + throwable;
-			} else {
-				return result.toUpperCase();
-			}
-		});
+		final CompletableFuture<String> recovered = questions
+				.handle((result, throwable) -> {
+					if (throwable != null) {
+						return "No PHP today due to: " + throwable;
+					} else {
+						return result.toUpperCase();
+					}
+				});
 
 		//then
 		log.debug("Handled: {}", recovered.get());
@@ -45,8 +46,8 @@ public class S08_ErrorHandling extends AbstractFuturesTest {
 		final CompletableFuture<String> questions = questions("php");
 
 		//when
-		final CompletableFuture<String> recovered =
-				questions.exceptionally(throwable -> "Sorry, try again later");
+		final CompletableFuture<String> recovered = questions
+				.exceptionally(throwable -> "Sorry, try again later");
 
 		//then
 		log.debug("Done: {}", recovered.get());
