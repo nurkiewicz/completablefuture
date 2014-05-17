@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
@@ -55,6 +56,26 @@ public class S10_AsyncHttp extends AbstractFuturesTest {
 							}
 						}
 				);
+	}
+
+	public CompletableFuture<String> loadTag(String tag) throws IOException {
+		final CompletableFuture<String> promise = new CompletableFuture<>();
+		asyncHttpClient.prepareGet("http://stackoverflow.com/questions/tagged/" + tag).execute(
+				new AsyncCompletionHandler<Void>() {
+
+					@Override
+					public Void onCompleted(Response response) throws Exception {
+						promise.complete(response.getResponseBody());
+						return null;
+					}
+
+					@Override
+					public void onThrowable(Throwable t) {
+						promise.completeExceptionally(t);
+					}
+				}
+		);
+		return promise;
 	}
 }
 
