@@ -14,25 +14,6 @@ public class S04_FlatMap extends AbstractFuturesTest {
 
 	private static final Logger log = LoggerFactory.getLogger(S04_FlatMap.class);
 
-	private CompletableFuture<Document> javaQuestions() {
-		return CompletableFuture.supplyAsync(() ->
-						client.mostRecentQuestionsAbout("java"),
-				executorService
-		);
-	}
-
-	private CompletableFuture<Question> findMostInterestingQuestion(Document document) {
-		return CompletableFuture.completedFuture(new Question());
-	}
-
-	private CompletableFuture<String> googleAnswer(Question q) {
-		return CompletableFuture.completedFuture("42");
-	}
-
-	private CompletableFuture<Integer> postAnswer(String answer) {
-		return CompletableFuture.completedFuture(200);
-	}
-
 	@Test
 	public void thenApplyIsWrong() throws Exception {
 		final CompletableFuture<CompletableFuture<Question>> future =
@@ -93,6 +74,25 @@ public class S04_FlatMap extends AbstractFuturesTest {
 						log.error("Wrong status code: {}", status);
 					}
 				});
+	}
+
+	private CompletableFuture<Document> javaQuestions() {
+		return CompletableFuture.supplyAsync(() ->
+						client.mostRecentQuestionsAbout("java"),
+				executorService
+		);
+	}
+
+	private CompletableFuture<Question> findMostInterestingQuestion(Document document) {
+		return CompletableFuture.completedFuture(new Question());
+	}
+
+	private CompletableFuture<String> googleAnswer(Question q) {
+		return CompletableFuture.completedFuture("42");
+	}
+
+	private CompletableFuture<Integer> postAnswer(String answer) {
+		return CompletableFuture.completedFuture(200);
 	}
 
 }
