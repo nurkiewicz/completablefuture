@@ -11,7 +11,7 @@ import java.util.concurrent.CompletableFuture;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class S11_RxJava extends AbstractFuturesTest {
+public class S12_RxJava extends AbstractFuturesTest {
 
 	public static final String MSG = "Don't panic";
 
