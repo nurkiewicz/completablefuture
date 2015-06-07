@@ -1,11 +1,13 @@
-# GeeCON 2014
+# CompletableFuture in Java 8 - asynchronous processing done right
 
-## CompletableFuture in Java 8 - asynchronous processing done right
+## Tomasz Nurkiewicz
 
-Source code presented and written during my talk at GeeCON 2014 conference: [CompletableFuture in Java 8 - asynchronous processing done right](http://2014.geecon.org/speakers/tomasz-nurkiewicz).
+Twitter: [@tnurkiewicz](https://twitter.com/tnurkiewicz)
 
-[Slides](https://github.com/nurkiewicz/geecon-2014/raw/master/geecon2014.odp) (actually, just one title slide) are available as well.
+Works for: [@4financeit](https://twitter.com/4financeit)
 
-![Photo from presentation](https://pbs.twimg.com/media/Bnrkpk4CIAAUhvM.jpg)
+E-mail: my last name `@gmail.com`
 
-(source: [Twitter](https://twitter.com/miciek/status/466936927502229505)).
+Home: [www.nurkiewicz.com](http://www.nurkiewicz.com)
+
+Source code: [www.github.com/nurkiewicz/completablefuture](http://www.github.com/nurkiewicz/completablefuture)
