@@ -37,9 +37,8 @@ public class S03_Map extends AbstractFuturesTest {
 						executorService
 				);
 
-		java.thenAccept(document -> {
-			log.debug("Downloaded: {}", document);
-		});
+		java.thenAccept(document ->
+				log.debug("Downloaded: {}", document));
 	}
 
 	@Test
