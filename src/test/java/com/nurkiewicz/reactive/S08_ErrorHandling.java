@@ -19,6 +19,7 @@ public class S08_ErrorHandling extends AbstractFuturesTest {
 			log.debug("Success!");
 			return r;
 		});
+		questions.get();
 	}
 
 	@Test

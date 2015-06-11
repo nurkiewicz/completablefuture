@@ -29,6 +29,9 @@ public class S03_Map extends AbstractFuturesTest {
 		log.debug("Length: {}", length);
 	}
 
+	/**
+	 * Callback hell, doesn't compose
+	 */
 	@Test
 	public void callbacksCallbacksEverywhere() throws Exception {
 		final CompletableFuture<Document> java =
@@ -71,8 +74,7 @@ public class S03_Map extends AbstractFuturesTest {
 				);
 
 		final CompletableFuture<Integer> length = java.
-				thenApply(doc ->
-						doc.select("a.question-hyperlink").get(0)).
+				thenApply(doc -> doc.select("a.question-hyperlink").get(0)).
 				thenApply(Element::text).
 				thenApply(String::length);
 

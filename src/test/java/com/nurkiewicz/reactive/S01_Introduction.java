@@ -13,6 +13,9 @@ public class S01_Introduction extends AbstractFuturesTest {
 
 	private static final Logger log = LoggerFactory.getLogger(S01_Introduction.class);
 
+	/**
+	 * Broken abstraction - blocking method calls
+	 */
 	@Test
 	public void blockingCall() throws Exception {
 		final String title = client.mostRecentQuestionAbout("java");
@@ -28,6 +31,9 @@ public class S01_Introduction extends AbstractFuturesTest {
 		log.debug("Found: '{}'", javaQuestion);
 	}
 
+	/**
+	 * Composing is impossible
+	 */
 	@Test
 	public void waitForFirstOrAll() throws Exception {
 		final Future<String> java = findQuestionsAbout("java");
