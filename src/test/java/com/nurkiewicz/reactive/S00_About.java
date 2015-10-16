@@ -8,7 +8,7 @@ package com.nurkiewicz.reactive;
  *
  * www.nurkiewicz.com
  *
- * www.github.com/nurkiewicz/hystrix-demo
+ * www.github.com/nurkiewicz/completablefuture
  *
  */
 public class S00_About {
